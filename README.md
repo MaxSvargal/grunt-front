@@ -17,3 +17,6 @@ For production:
 ```
 $ grunt prod
 ```
+
+See http://localhost:9000
+You may connect with [livereload][https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei]
