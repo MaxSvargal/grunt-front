@@ -1,0 +1,17 @@
+{
+  "name": "grunt-front",
+  "description": "Grunt config for compile frontend from CoffeeScript with CommonJS, Stylus and Jade.",
+  "version": "0.1.0",
+  "author": "maxsvargal@gmail.com",
+  "devDependencies": {
+    "jade": "latest",
+    "grunt-jade": "latest",
+    "grunt-contrib-stylus": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-connect": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-urequire": "latest",
+    "connect-url-rewrite": "latest"
+  },
+  "engine": "node 0.10.x"
+}
