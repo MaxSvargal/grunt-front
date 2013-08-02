@@ -10,8 +10,13 @@ lib-cov
 pids
 logs
 results
+<<<<<<< HEAD
 public/*
 npm-debug.log
 node_modules
 *.swp
 .DS_Store
+=======
+
+npm-debug.log
+>>>>>>> c04eed7d82b0d000e5f302198941b886f6c5ba75
