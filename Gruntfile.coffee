@@ -4,6 +4,7 @@ module.exports = (grunt) ->
 	pkg = require './package.json'
 
 	grunt.initConfig 
+
 		stylus: 
 			dev: 
 				options:
@@ -11,6 +12,7 @@ module.exports = (grunt) ->
 					urlfunc: 'embedurl'
 				files: 
 					'public/styles/main.css': 'src/styles/main.styl'
+
 		jade: 
 			compile:
 				options:
@@ -19,10 +21,10 @@ module.exports = (grunt) ->
 					pretty: false
 					self: false
 					locals: true
-					runtime: false
+					runtime: true
 					wrap:
 						amd: true
-						dependencies: 'jade'
+						dependencies: '../runtime'
 				files:
 					'public/scripts/templates/': ['src/templates/**/*.jade']
 			index:
@@ -30,6 +32,13 @@ module.exports = (grunt) ->
 					client: false
 				files:
 					'public': 'src/index.jade'
+
+		clean:
+			templates: [
+				'public/scripts/runtime.js'
+				'public/scripts/templates'
+			]
+
 		urequire:
 			dev:
 				template: 'combined'
@@ -61,7 +70,10 @@ module.exports = (grunt) ->
 
 			jade: 
 				files: 'src/templates/**/*.jade'
-				tasks: 'jade:compile'
+				tasks: [
+					'jade:compile'
+					'urequire:dev'
+				]
 				options:
 					interrupt: true
 
@@ -88,6 +100,8 @@ module.exports = (grunt) ->
 				]
 				options:
 					interrupt: true
+
+
 	# Dependencies
 	# ============
 	for name of pkg.devDependencies when name.substring(0, 6) is 'grunt-'
@@ -98,8 +112,8 @@ module.exports = (grunt) ->
 		'jade:compile'
 		'jade:index'
 		'urequire:dev'
-		'connect:dev'
 		'stylus:dev'
+		'connect:dev'
 		'watch'
 	]
 
@@ -107,9 +121,9 @@ module.exports = (grunt) ->
 		'jade:compile'
 		'jade:index'
 		'urequire:prod'
-		'connect:dev'
+		'clean:templates'
 		'stylus:dev'
-		'watch'
+		'connect:dev'
 	]
 
 	grunt.registerTask 'default', 'dev'

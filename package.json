@@ -10,6 +10,7 @@
     "grunt-contrib-watch": "latest",
     "grunt-contrib-connect": "latest",
     "grunt-contrib-uglify": "latest",
+    "grunt-contrib-clean": "latest",
     "grunt-urequire": "latest",
     "connect-url-rewrite": "latest"
   },
