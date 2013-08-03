@@ -7,8 +7,10 @@ module.exports = (grunt) ->
 		stylus: 
 			dev: 
 				options:
-					paths: 'src/styles'
+					paths: ['src/styles']
 					urlfunc: 'embedurl'
+				files: 
+					'public/styles/main.css': 'src/styles/main.styl'
 		jade: 
 			compile:
 				options:
@@ -76,8 +78,14 @@ module.exports = (grunt) ->
 					interrupt: true
 
 			urequire:
-				files: 'src/scripts/**/*.coffee'
-				tasks: 'urequire:dev'
+				files: [
+					'src/scripts/**/*.coffee'
+					'src/templates/**/*.jade'
+				]
+				tasks: [
+					'urequire:dev'
+					'jade:compile'
+				]
 				options:
 					interrupt: true
 	# Dependencies
@@ -87,18 +95,18 @@ module.exports = (grunt) ->
 
 	# Default task(s).
 	grunt.registerTask 'dev', [
-		'urequire:dev'
 		'jade:compile'
 		'jade:index'
+		'urequire:dev'
 		'connect:dev'
 		'stylus:dev'
 		'watch'
 	]
 
 	grunt.registerTask 'prod', [
-		'urequire:prod'
 		'jade:compile'
 		'jade:index'
+		'urequire:prod'
 		'connect:dev'
 		'stylus:dev'
 		'watch'
