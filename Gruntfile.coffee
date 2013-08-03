@@ -14,7 +14,7 @@ module.exports = (grunt) ->
           'public/styles/main.css': 'src/styles/main.styl'
 
     jade: 
-      compile:
+      templates:
         options:
           debug: false
           client: true
@@ -27,11 +27,11 @@ module.exports = (grunt) ->
             dependencies: '../runtime'
         files:
           'public/scripts/templates/': ['src/templates/**/*.jade']
-      index:
+      html:
         options:
           client: false
         files:
-          'public': 'src/index.jade'
+          'public': 'src/*.jade'
 
     clean:
       templates: [
@@ -71,15 +71,15 @@ module.exports = (grunt) ->
       jade: 
         files: 'src/templates/**/*.jade'
         tasks: [
-          'jade:compile'
+          'jade:templates'
           'urequire:dev'
         ]
         options:
           interrupt: true
 
       index:
-        files: 'src/index.jade'
-        tasks: 'jade:index'
+        files: 'src/*.jade'
+        tasks: 'jade:html'
         options:
           interrupt: true
 
@@ -96,7 +96,7 @@ module.exports = (grunt) ->
         ]
         tasks: [
           'urequire:dev'
-          'jade:compile'
+          'jade:templates'
         ]
         options:
           interrupt: true
@@ -109,8 +109,8 @@ module.exports = (grunt) ->
 
   # Default task(s).
   grunt.registerTask 'dev', [
-    'jade:compile'
-    'jade:index'
+    'jade:templates'
+    'jade:html'
     'urequire:dev'
     'stylus:dev'
     'connect:dev'
@@ -118,8 +118,8 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask 'prod', [
-    'jade:compile'
-    'jade:index'
+    'jade:templates'
+    'jade:html'
     'urequire:prod'
     'clean:templates'
     'stylus:dev'
