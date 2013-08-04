@@ -1,6 +1,6 @@
 # grunt-front
 
-Grunt config and skeleton for compile frontend from CoffeeScript with CommonJS, Stylus and Jade.
+Grunt config and skeleton for compile frontend from [CoffeeScript](http://coffeescript.org/) with [CommonJS](http://wiki.commonjs.org/wiki/CommonJS), [Stylus](http://learnboost.github.io/stylus/) with [Fluidity CSS framework](http://fluiditycss.com/) and [Jade](http://jade-lang.com/).
 
 ### How to
 Install npm packages:
