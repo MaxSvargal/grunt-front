@@ -12,7 +12,9 @@
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-clean": "latest",
     "grunt-urequire": "latest",
-    "connect-url-rewrite": "latest"
+    "connect-url-rewrite": "latest",
+    "stylus": "latest",
+    "fluidity": "latest"
   },
   "engine": "node 0.10.x"
 }

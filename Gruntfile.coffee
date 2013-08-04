@@ -10,6 +10,7 @@ module.exports = (grunt) ->
         options:
           paths: ['src/styles']
           urlfunc: 'embedurl'
+          use:[ require 'fluidity' ]
         files: 
           'public/styles/main.css': 'src/styles/main.styl'
 
